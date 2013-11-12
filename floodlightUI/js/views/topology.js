@@ -87,7 +87,7 @@ window.TopologyView = Backbone.View.extend({
                           .call(force.drag);
                           
             node.append("image")
-                .attr("xlink:href", function (d) {return d.group==1 ? "/ui/img/switch.png" : "/ui/img/server.png"})
+                .attr("xlink:href", function (d) {return d.group==1 ? "/floodlightUI/img/switch.png" : "/floodlightUI/img/server.png"})
                 .attr("x", -16).attr("y", -16)
                 .attr("width", 32).attr("height", 32);
             node.append("text").attr("dx", 20).attr("dy", ".35em")
