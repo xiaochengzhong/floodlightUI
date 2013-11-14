@@ -1,3 +1,55 @@
+<style type="text/css">
+#flow-pusher-body{
+	display : none;
+}
+#flow-pusher-header,#flow-pusher-body{
+	margin-top: 20px;
+}
+</style>
+<script type="text/javascript">
+	$(function(){
+		var URL = this.location.href;
+		//console.log(URL);
+		var array = URL.split("/");
+		//console.log(array);
+		var DPID = array[array.length - 1];
+		//console.log(DPID);
+		$.post("http://localhost/flowPusher.php",
+			{
+				commend : "curl http://localhost:8080/wm/staticflowentrypusher/list/"+DPID+"/json"
+			},
+			function(data, status){
+				jsondata = $.parseJSON(data);
+				flowArr = jsondata[DPID];
+				var index = 0;
+				var flowNameArr = new Array();
+				for(var flow in flowArr){
+					flowNameArr.push(flow);	
+				};
+				console.log(flowNameArr);
+				$(".flow-name").each(function(){
+					$(this).text(flowNameArr[index++]);
+					console.log(index);
+				});
+			});
+	});
+	function addBtnClick(){
+		$("#flow-pusher-body").css("display" , "block");
+	};
+	function commitBtnClick(){
+		$.post("http://localhost/flowPusher.php",
+			{
+				commend : $("#flow-input-area").val()
+			},
+			function(data, status){
+				jsondata=$.parseJSON(data);
+				if(jsondata.status.indexOf("Entry") >= 0)
+					alert(jsondata.status);
+				else
+					alert("Flow Pusher failed, please check your commend!");
+			});
+	};
+</script>
 <div class="row">
 <div class="span12">
 <div class="page-header">
@@ -13,6 +65,14 @@ S/N: <%= serialNumber %><br>
 <div id="port-list"></div> <!-- TODO would be nice to make this collapsible -->
 
 <div id="flow-list"></div>
-
+<div id="flow-pusher">
+	<div id="flow-pusher-header">
+		<button id="add-flow-btn" class="btn" onClick="addBtnClick()">Flow Pusher</button>
+	</div>
+	<div id="flow-pusher-body">
+		<textarea id="flow-input-area" rows="3" class="span12"></textarea>
+		<button id="commit-btn" class="btn" onClick="commitBtnClick()">commit</button>
+	</div>
+</div>
 </div>
 </div>

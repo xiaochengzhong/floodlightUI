@@ -71,3 +71,9 @@ window.SwitchListView = Backbone.View.extend({
 
 });
 
+$(document).ready(function(){
+  $("#add-flow-btn").click(function(){
+    $("#flow-pusher-body").css("display" , "block");
+  });
+});
+
