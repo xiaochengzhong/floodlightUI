@@ -1,0 +1,25 @@
+.content
+{
+	position:relative;
+	top:60px;
+	width:910px;
+	margin:auto;
+}
+
+#tail_btn, #stop_btn
+{
+	display:inline-block;
+	position:relative;
+	margin-top:10px;
+	width:100px;
+	height:35px;
+}
+.inset
+{
+	box-shadow:inset 2px 2px 2px 0px;
+}
+
+.log{
+word-break:break-all;
+}
+
