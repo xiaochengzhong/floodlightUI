@@ -161,7 +161,7 @@ window.Switch = Backbone.Model.extend({
     
     loadFlows:function () {
         var self = this;
-        //console.log("fetching switch " + this.id + " flows")
+        console.log("fetching switch " + this.id + " flows");
         $.ajax({
             url:hackBase + "/wm/core/switch/" + self.id + '/flow/json',
             dataType:"json",
@@ -252,12 +252,32 @@ window.Switch = Backbone.Model.extend({
                     // remove trailing ", "
                     f.actionText = f.actionText.substr(0, f.actionText.length - 2);
 
-                    //console.log(f);
+                    // console.log(f);
                     self.flows.add(f, {silent: true});
                 });
                 self.flows.trigger('add');
+
+                $.post("http://localhost/flowPusher.php",
+                    {
+                        commend : "curl http://localhost:8080/wm/staticflowentrypusher/list/" + self.id + "/json"
+                    },
+                    function(data, status){
+                        jsondata = $.parseJSON(data);
+                        flowArr = jsondata[self.id];
+                        var index = 0;
+                        var flowNameArr = new Array();
+                        for(var flow in flowArr){
+                            flowNameArr.push(flow); 
+                        };
+                        console.log(flowNameArr);
+                        $(".flow-name").each(function(){
+                            $(this).text(flowNameArr[index++]);
+                            console.log(index);
+                        });
+                });
             }
         });
+        
     },
 });
 

@@ -7,32 +7,32 @@
 }
 </style>
 <script type="text/javascript">
-	$(function(){
-		var URL = this.location.href;
-		//console.log(URL);
-		var array = URL.split("/");
-		//console.log(array);
-		var DPID = array[array.length - 1];
-		//console.log(DPID);
-		$.post("http://localhost/flowPusher.php",
-			{
-				commend : "curl http://localhost:8080/wm/staticflowentrypusher/list/"+DPID+"/json"
-			},
-			function(data, status){
-				jsondata = $.parseJSON(data);
-				flowArr = jsondata[DPID];
-				var index = 0;
-				var flowNameArr = new Array();
-				for(var flow in flowArr){
-					flowNameArr.push(flow);	
-				};
-				console.log(flowNameArr);
-				$(".flow-name").each(function(){
-					$(this).text(flowNameArr[index++]);
-					console.log(index);
-				});
-			});
-	});
+	// $(function(){
+	// 	var URL = this.location.href;
+	// 	//console.log(URL);
+	// 	var array = URL.split("/");
+	// 	//console.log(array);
+	// 	var DPID = array[array.length - 1];
+	// 	//console.log(DPID);
+	// 	$.post("http://localhost/flowPusher.php",
+	// 		{
+	// 			commend : "curl http://localhost:8080/wm/staticflowentrypusher/list/"+DPID+"/json"
+	// 		},
+	// 		function(data, status){
+	// 			jsondata = $.parseJSON(data);
+	// 			flowArr = jsondata[DPID];
+	// 			var index = 0;
+	// 			var flowNameArr = new Array();
+	// 			for(var flow in flowArr){
+	// 				flowNameArr.push(flow);	
+	// 			};
+	// 			console.log(flowNameArr);
+	// 			$(".flow-name").each(function(){
+	// 				$(this).text(flowNameArr[index++]);
+	// 				console.log(index);
+	// 			});
+	// 		});
+	// });
 	function addBtnClick(){
 		$("#flow-pusher-body").css("display" , "block");
 	};
@@ -70,7 +70,7 @@ S/N: <%= serialNumber %><br>
 		<button id="add-flow-btn" class="btn" onClick="addBtnClick()">Flow Pusher</button>
 	</div>
 	<div id="flow-pusher-body">
-		<textarea id="flow-input-area" rows="3" class="span12"></textarea>
+		<textarea id="flow-input-area" rows="3" class="span12" style="color: white; background-color: black;"></textarea>
 		<button id="commit-btn" class="btn" onClick="commitBtnClick()">commit</button>
 	</div>
 </div>
