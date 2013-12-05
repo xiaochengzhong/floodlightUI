@@ -19,10 +19,10 @@
 					</a>
 					<div class="nav-collapse">
 						<ul class="nav">
-							<li><a href="/floodlightUI">Dashboard</a></li>
-							<li><a href="/floodlightUI">Topology</a></li>
-							<li><a href="/floodlightUI">Switches</a></li>
-							<li><a href="/floodlightUI">Hosts</a></li>
+							<li><a href="/floodlightUI/index.html">Dashboard</a></li>
+							<li><a href="/floodlightUI/topology/topology.php">Topology</a></li>
+							<li><a href="/floodlightUI/index.html#switches">Switches</a></li>
+							<li><a href="/floodlightUI/index.html#hosts">Hosts</a></li>
 							<li class="active"><a href="" onclick="location.href='/floodlightUI/log/log.php';return;">log</a></li>
 						</ul>
 					</div>

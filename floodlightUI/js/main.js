@@ -19,13 +19,13 @@ var hackBase = "http://localhost/index.php"; // put a URL here to access a diffe
 var AppRouter = Backbone.Router.extend({
 
     routes:{
-        "":"home",
-        "topology":"topology",
-        "switches":"switchList",
-        "switch/:id":"switchDetails",
-        "switch/:id/port/:p":"portDetails", // not clear if needed
-        "hosts":"hostList",
-        "host/:id":"hostDetails",
+        "floodlightUI/index.html":"home",
+        "floodlightUI/index.html#topology":"topology",
+        "floodlightUI/index.html#switches":"switchList",
+        "floodlightUI/index.html#switch/:id":"switchDetails",
+        "floodlightUI/index.html#switch/:id/port/:p":"portDetails", // not clear if needed
+        "floodlightUI/index.html#hosts":"hostList",
+        "floodlightUI/index.html#host/:id":"hostDetails",
         // "vlans":"vlanList" // maybe one day
         // "vlan/:id":"vlanDetails"
     },
@@ -108,8 +108,8 @@ tpl.loadTemplates(['home', 'status', 'topology', 'header', 'switch', 'switch-lis
                 var target = e.target || e.srcElement
                 if ( target.nodeName.toLowerCase() === 'a' ) {
                     e.preventDefault()
-                    var uri = target.getAttribute('href')
-                    app.navigate(uri.substr(1), true)
+                    var uri = target.getAttribute('href').substr(1);
+                    app.navigate('/floodlightUI/index.html' + (uri?'#'+uri:''), true);
                 }
             });
             window.addEventListener('popstate', function(e) {
