@@ -5,7 +5,7 @@
 
 **注意：**这实际上是一个Floodlight的fork项目。
 
-* 如何安装和运行Floodlight，请参看：[Floodlight - Installation Guide] 你需要做的是把git repo url 改成 `https://github.com/xiaochengzhong/floodlightUI`
+* 如何安装和运行Floodlight，请参看：[Floodlight - Installation Guide](http://www.openflowhub.org/display/floodlightcontroller/Installation+Guide) 你需要做的是把git repo url 改成 `https://github.com/xiaochengzhong/floodlightUI`
 * 关于如何用Mininet + Floodlight 搭建测试环境请参见：[http://liwenjunmm.diandian.com/post/2013-01-16/40047359629](http://liwenjunmm.diandian.com/post/2013-01-16/40047359629)
 
 ## 一、概述
