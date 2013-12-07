@@ -1,5 +1,13 @@
 # 基于Floodlight的SDN应用
 
+
+## Geting Started
+
+**注意：**这实际上是一个Floodlight的fork项目。
+
+* 如何安装和运行Floodlight，请参看：[Floodlight - Installation Guide] 你需要做的是把git repo url 改成 `https://github.com/xiaochengzhong/floodlightUI`
+* 关于如何用Mininet + Floodlight 搭建测试环境请参见：[http://liwenjunmm.diandian.com/post/2013-01-16/40047359629](http://liwenjunmm.diandian.com/post/2013-01-16/40047359629)
+
 ## 一、概述
 
 ### 1. Floodlight
@@ -83,7 +91,7 @@ sudo mn --topo tree,depth=3,fanout=2 --controller=remote --ip=xxx.xxx.xxx.xxx --
 
 ### 2. 构建
 
-这边缺了
+    TODO: 
 
 
 ## 三、关键功能简介
