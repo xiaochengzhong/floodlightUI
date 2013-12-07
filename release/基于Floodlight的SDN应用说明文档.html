@@ -294,6 +294,16 @@ pre {
 <body>
 <h1>基于Floodlight的SDN应用</h1>
 
+<h2>Geting Started</h2>
+
+<p><strong>注意：</strong>这实际上是一个Floodlight的fork项目。</p>
+
+<ul>
+<li><p>如何安装和运行Floodlight，请参看：<a href="http://www.openflowhub.org/display/floodlightcontroller/Installation+Guide">Floodlight - Installation Guide</a> 你需要做的是把git repo url 改成 <code>https://github.com/xiaochengzhong/floodlightUI</code></p></li>
+<li><p>关于如何用Mininet + Floodlight 搭建测试环境请参见：<a href="http://liwenjunmm.diandian.com/post/2013-01-16/40047359629">http://liwenjunmm.diandian.com/post/2013-01-16/40047359629</a></p></li>
+</ul>
+
+
 <h2>一、概述</h2>
 
 <h3>1. Floodlight</h3>
@@ -309,12 +319,12 @@ pre {
 <p>Floodlight的一些重要特性：</p>
 
 <ul>
-<li>提供一个模块加载系统，使得拓展和提升变得简单。</li>
-<li>容易构建——最小依赖。</li>
-<li>支持多种虚拟的或物理的OpenFlow交换机。</li>
-<li>能够处理OpenFlow和非OpenFlow的混合使用情形。它能管理多个OpenFlow硬件「岛屿」。</li>
-<li>为高性能而设计。</li>
-<li>支持OpenStack cloud orchestration platform</li>
+<li><p>提供一个模块加载系统，使得拓展和提升变得简单。</p></li>
+<li><p>容易构建——最小依赖。</p></li>
+<li><p>支持多种虚拟的或物理的OpenFlow交换机。</p></li>
+<li><p>能够处理OpenFlow和非OpenFlow的混合使用情形。它能管理多个OpenFlow硬件「岛屿」。</p></li>
+<li><p>为高性能而设计。</p></li>
+<li><p>支持OpenStack cloud orchestration platform</p></li>
 </ul>
 
 
@@ -329,12 +339,12 @@ pre {
 <p><strong>Mininet的特性</strong></p>
 
 <ul>
-<li>可以简单、迅速地创建一个支持用户自定义的网络拓扑，缩短开发测试周期</li>
-<li>可以运行真实的程序，在Linux上运行的程序基本上可以都可以在Mininet上运行，如Wireshark</li>
-<li>Mininet支持Openflow，在Mininet上运行的代码可以轻松移植到支持OpenFlow的硬件设备上</li>
-<li>Mininet可以在自己的电脑，或服务器，或虚拟机，或者云（例如Amazon EC2）上运行</li>
-<li>Mininet提供python API，简单易用</li>
-<li>Mininet是开源项目，源代码在：<a href="https://github.com/mininet">https://github.com/mininet</a></li>
+<li><p>可以简单、迅速地创建一个支持用户自定义的网络拓扑，缩短开发测试周期</p></li>
+<li><p>可以运行真实的程序，在Linux上运行的程序基本上可以都可以在Mininet上运行，如Wireshark</p></li>
+<li><p>Mininet支持Openflow，在Mininet上运行的代码可以轻松移植到支持OpenFlow的硬件设备上</p></li>
+<li><p>Mininet可以在自己的电脑，或服务器，或虚拟机，或者云（例如Amazon EC2）上运行</p></li>
+<li><p>Mininet提供python API，简单易用</p></li>
+<li><p>Mininet是开源项目，源代码在：<a href="https://github.com/mininet">https://github.com/mininet</a></p></li>
 </ul>
 
 
@@ -344,7 +354,8 @@ pre {
 
 <p>利用它可以非常方便的模拟出一个N叉树的网络，其中每一个中间节点都是一个Switch，每一个叶节点都是一个Host。例如，模拟出一棵四层的满二叉树网络的命令为：</p>
 
-<pre><code>sudo mn --topo tree,depth=3,fanout=2 --controller=remote --ip=xxx.xxx.xxx.xxx --port=6633
+<pre><code>
+sudo mn --topo tree,depth=3,fanout=2 --controller=remote --ip=xxx.xxx.xxx.xxx --port=6633
 </code></pre>
 
 <p><em>更多Mininet操作指导可以参见<a href="http://mininet.org/walkthrough/">http://mininet.org/walkthrough/</a>。</em></p>
@@ -356,12 +367,12 @@ pre {
 <p>我们希望基于Floodlight现有的<a href="http://www.openflowhub.org/display/floodlightcontroller/APIs">API</a> (REST API, Static Flow Pusher API) 实现一个简单的管理站点。它的主要功能有：</p>
 
 <ul>
-<li>查看Switch列表及各个Switch的信息</li>
-<li>查看Host列表及各个Host的信息</li>
-<li>查看网络拓扑图</li>
-<li>查看流表</li>
-<li>针对某个Switch添加/删除Static Flow</li>
-<li>查看日志</li>
+<li><p>查看Switch列表及各个Switch的信息</p></li>
+<li><p>查看Host列表及各个Host的信息</p></li>
+<li><p>查看网络拓扑图</p></li>
+<li><p>查看流表</p></li>
+<li><p>针对某个Switch添加/删除Static Flow</p></li>
+<li><p>查看日志</p></li>
 </ul>
 
 
@@ -376,10 +387,10 @@ pre {
 <p>我们对上图做简单的说明：</p>
 
 <ul>
-<li><strong>Mininet虚拟网络。</strong> 底层虚拟机上的操作系统上安装有Mininet。通过Mininet我们可以创建多种类型的拓扑，并且可以把Floodlight Controller设置为远程，在我们的方案中Floodlight安装在虚拟机的宿主机上。</li>
-<li><strong>Floodlight</strong> 负责监听和控制虚拟机中拓扑的动态。并开放REST API，执行相应的任务。</li>
-<li><strong>Proxy</strong> 我们在宿主机上又搭建了一台服务器，后端即Command Proxy负责转发前端Web Interface的操作请求给Floodlight。</li>
-<li><strong>Web Interface</strong> 为整个应用的前端，即主要的用户界面。负责内容展示和交互。根据用户操作生成相应的请求，发送到代理服务器。从服务器拿到结果后，对内容进行渲染展示给用户。这些页面上包括拓扑展示和操作，设备信息展示，流表展示和操作，日志显示等。</li>
+<li><p><strong>Mininet虚拟网络。</strong> 底层虚拟机上的操作系统上安装有Mininet。通过Mininet我们可以创建多种类型的拓扑，并且可以把Floodlight Controller设置为远程，在我们的方案中Floodlight安装在虚拟机的宿主机上。</p></li>
+<li><p><strong>Floodlight</strong> 负责监听和控制虚拟机中拓扑的动态。并开放REST API，执行相应的任务。</p></li>
+<li><p><strong>Proxy</strong> 我们在宿主机上又搭建了一台服务器，后端即Command Proxy负责转发前端Web Interface的操作请求给Floodlight。</p></li>
+<li><p><strong>Web Interface</strong> 为整个应用的前端，即主要的用户界面。负责内容展示和交互。根据用户操作生成相应的请求，发送到代理服务器。从服务器拿到结果后，对内容进行渲染展示给用户。这些页面上包括拓扑展示和操作，设备信息展示，流表展示和操作，日志显示等。</p></li>
 </ul>
 
 
@@ -393,7 +404,8 @@ pre {
 
 <h3>2. 构建</h3>
 
-<p>这边缺了</p>
+<pre><code>TODO:
+</code></pre>
 
 <h2>三、关键功能简介</h2>
 
@@ -425,7 +437,8 @@ pre {
 
 <p>应用给用户提供了增加和删除流表的功能。在流表的下方我们为用户提供了命令输入窗口，在这里用户可以自主输入添加流表命令，比如示例命令如下：</p>
 
-<pre><code>curl -d '{"switch": "00:00:00:00:00:00:00:09", "name":"flow-mod-1", "cookie":"0", "priority":"32768", "ingress-port":"1","active":"true", "actions":"output=2"}' http://localhost:8080/wm/staticflowentrypusher/json
+<pre><code>
+curl -d '{"switch": "00:00:00:00:00:00:00:09", "name":"flow-mod-1", "cookie":"0", "priority":"32768", "ingress-port":"1","active":"true", "actions":"output=2"}' http://localhost:8080/wm/staticflowentrypusher/json
 </code></pre>
 
 <p>来添加一条流表（具体命令格式详见Floodlight REST API说明）。上图是在添加流表，下图则是添加流表成功的样子。我们可以明显看到流表中多了一条记录。</p>
@@ -434,7 +447,8 @@ pre {
 
 <p>删除和添加基本上一样，区别仅在于命令不同。这是删除上面添加的流表的示例命令：</p>
 
-<pre><code>curl -X DELETE -d '{"name":"flow-mod-1"}' http://localhost:8080/wm/staticflowentrypusher/json
+<pre><code>
+curl -X DELETE -d '{"name":"flow-mod-1"}' http://localhost:8080/wm/staticflowentrypusher/json
 </code></pre>
 
 <p><img src="https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/delete-flow-result-1.png" alt="Delete Flow Result" /></p>
@@ -446,185 +460,360 @@ pre {
 <p>Possible properties of a flow entry:</p>
 
 <table class="confluenceTable"><tbody>
+
 <tr>
+
 <th class="confluenceTh"> Key <br class="atl-forced-newline"> </th>
+
 <th class="confluenceTh"> Value <br class="atl-forced-newline"> </th>
+
 <th class="confluenceTh"> Notes <br class="atl-forced-newline"> </th>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> switch </td>
+
 <td class="confluenceTd"> &lt;switch ID&gt; </td>
+
 <td class="confluenceTd"> ID of the switch (data path) that this rule should be added to <br class="atl-forced-newline">
+
 xx:xx:xx:xx:xx:xx:xx:xx </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> name </td>
+
 <td class="confluenceTd"> &lt;string&gt; </td>
+
 <td class="confluenceTd"> Name of the flow entry, this is the primary key, it MUST be unique </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> actions </td>
+
 <td class="confluenceTd"> &lt;key&gt;=&lt;value&gt; </td>
+
 <td class="confluenceTd"> See table of actions below <br class="atl-forced-newline">
+
 Specify multiple actions using a comma-separated list <br class="atl-forced-newline">
+
 Specifying no actions will cause the packets to be dropped </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> priority </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> default is 32767 <br class="atl-forced-newline">
+
 maximum value is 32767 </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> active </td>
+
 <td class="confluenceTd"> &lt;boolean&gt; </td>
+
 <td class="confluenceTd">&nbsp;</td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> wildcards </td>
+
 <td class="confluenceTd">&nbsp;</td>
+
 <td class="confluenceTd">&nbsp;</td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> ingress-port </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> switch port on which the packet is received <br class="atl-forced-newline">
+
 Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> src-mac </td>
+
 <td class="confluenceTd"> &lt;mac address&gt; </td>
+
 <td class="confluenceTd"> xx:xx:xx:xx:xx:xx </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> dst-mac </td>
+
 <td class="confluenceTd"> &lt;mac address&gt; </td>
+
 <td class="confluenceTd"> xx:xx:xx:xx:xx:xx </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> vlan-id </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> vlan-priority </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> ether-type </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> tos-bits </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> protocol </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> src-ip </td>
+
 <td class="confluenceTd"> &lt;ip address&gt;[/mask]  </td>
+
 <td class="confluenceTd"> xx.xx.xx.xx[/xx] </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> dst-ip </td>
+
 <td class="confluenceTd"> &lt;ip address&gt;[/mask]  </td>
+
 <td class="confluenceTd"> xx.xx.xx.xx[/xx] </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> src-port </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> dst-port </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 </tbody></table>
 
 
 <p>Possible actions within the "action" field:</p>
 
 <table class="confluenceTable"><tbody>
+
 <tr>
+
 <th class="confluenceTh"> Key <br class="atl-forced-newline"> </th>
+
 <th class="confluenceTh"> Value </th>
+
 <th class="confluenceTh"> Notes </th>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> output </td>
+
 <td class="confluenceTd"> &lt;number&gt; <br class="atl-forced-newline">
+
 all <br class="atl-forced-newline">
+
 controller <br class="atl-forced-newline">
+
 local <br class="atl-forced-newline">
+
 ingress-port <br class="atl-forced-newline">
+
 normal <br class="atl-forced-newline">
+
 flood </td>
+
 <td class="confluenceTd"> no "drop" option <br class="atl-forced-newline">
+
 (instead, specify no action to drop packets) <br class="atl-forced-newline"> </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> enqueue </td>
+
 <td class="confluenceTd"> &lt;number&gt;:&lt;number&gt; </td>
+
 <td class="confluenceTd"> First number is port number, second is queue ID <br class="atl-forced-newline">
+
 Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> strip-vlan </td>
+
 <td class="confluenceTd">&nbsp;</td>
+
 <td class="confluenceTd">&nbsp;</td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> set-vlan-id </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> set-vlan-priority </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> set-src-mac </td>
+
 <td class="confluenceTd"> &lt;mac address&gt; </td>
+
 <td class="confluenceTd"> xx:xx:xx:xx:xx:xx </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> set-dst-mac </td>
+
 <td class="confluenceTd"> &lt;mac address&gt; </td>
+
 <td class="confluenceTd"> xx:xx:xx:xx:xx:xx </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> set-tos-bits </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd">&nbsp;</td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> set-src-ip </td>
+
 <td class="confluenceTd"> &lt;ip address&gt; </td>
+
 <td class="confluenceTd"> xx.xx.xx.xx </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> set-dst-ip </td>
+
 <td class="confluenceTd"> &lt;ip address&gt; </td>
+
 <td class="confluenceTd"> xx.xx.xx.xx </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> set-src-port </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 <tr>
+
 <td class="confluenceTd"> set-dst-port </td>
+
 <td class="confluenceTd"> &lt;number&gt; </td>
+
 <td class="confluenceTd"> Can be hexadecimal (with leading 0x) or decimal </td>
+
 </tr>
+
 </tbody></table>
 
 
@@ -634,12 +823,80 @@ Can be hexadecimal (with leading 0x) or decimal </td>
 
 <p><img src="https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/log.png" alt="Log" /></p>
 
+<h3>7. 通信</h3>
+
+<p>以下所有命令的具体信息请参看：<a href="http://mininet.org/walkthrough/">Mininet Walkthrough</a></p>
+
+<p>查看节点中连接信息，在mininet控制台输入以下命令：</p>
+
+<pre><code>
+mininet&gt; net
+</code></pre>
+
+<p>结果如下：</p>
+
+<p><img src="https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/net.png" alt="display net" /></p>
+
+<p>查看所有节点的IP端口信息，在mininet控制台输入以下命令：</p>
+
+<pre><code>
+mininet&gt; dump
+</code></pre>
+
+<p>结果如下：</p>
+
+<p><img src="https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/dump.png" alt="display net" /></p>
+
+<p>查看特定switch或host的端口信息，在mininet控制台输入以下命令：</p>
+
+<pre><code>
+mininet&gt; s9 ifconfig -a //s9 is a switch name
+</code></pre>
+
+<p>结果如下：</p>
+
+<p><img src="https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/ifconfig.png" alt="display net" /></p>
+
+<p>查看特定switch或host的arp或route信息，在mininet控制台输入以下命令：</p>
+
+<pre><code>
+mininet&gt; s9 arp //s9 is a switch name
+</code></pre>
+
+<pre><code>
+mininet&gt; s9 route //s9 is a switch name
+</code></pre>
+
+<p>结果如下：</p>
+
+<p><img src="https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/arpAndroute.png" alt="display net" /></p>
+
+<p>查看两个节点间的连接信息，在mininet控制台输入以下命令：</p>
+
+<pre><code>
+mininet&gt; h1 ping -c 1 h2 //h1 , h2 is a host name
+</code></pre>
+
+<p>结果如下：</p>
+
+<p><img src="https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/ping.png" alt="display net" /></p>
+
+<p>查看所有节点间的连接信息，在mininet控制台输入以下命令：</p>
+
+<pre><code>
+mininet&gt; pingall
+</code></pre>
+
+<p>结果如下：</p>
+
+<p><img src="https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/pingall.png" alt="display net" /></p>
+
 <h3>四、组员及分工</h3>
 
 <ul>
-<li>钟晓诚MF1332095，靳峥MF1332025：Static Flow Pusher API实现。</li>
-<li>吕翔MF1332042，唐毅明MF1332057：编写测试用的发包脚本，项目文档编写。</li>
-<li>孟焱MF1332044，倪卫明MF1332045：拓扑设计与环境搭建，Web页面UI设计，日志功能实现。</li>
+<li><p>钟晓诚MF1332095，靳峥MF1332025：Static Flow Pusher API实现。</p></li>
+<li><p>吕翔MF1332042，唐毅明MF1332057：编写测试用的发包脚本，项目文档编写。</p></li>
+<li><p>孟焱MF1332044，倪卫明MF1332045：拓扑设计与环境搭建，Web页面UI设计，日志功能实现。</p></li>
 </ul>
 
 </body>

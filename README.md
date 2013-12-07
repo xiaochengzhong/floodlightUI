@@ -1,6 +1,5 @@
 # 基于Floodlight的SDN应用
 
-
 ## Geting Started
 
 **注意：**这实际上是一个Floodlight的fork项目。
@@ -91,16 +90,16 @@ Mininet可以连接到Floodlight作为Controller，Controller可以是本地的�
 具体的模块间协作图：
 
 ![Info Diagram](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/activity.png)
-    
+
 #### 为什么引入Command Proxy？
 
 由于ajax不能跨域请求，所以我们建立了一个服务器端代理。Command Proxy是我们用PHP编写的一个后端脚本，它用来转发Web Interface的请求或者执行Web Interface发送的命令。
-    
+
 
 
 ### 2. 构建
 
-    TODO: 
+    TODO:
 
 
 ## 三、关键功能简介
@@ -341,10 +340,10 @@ Can be hexadecimal (with leading 0x) or decimal </td>
 
 最后我们还完成了查看日志的功能。整个拓扑网络的日志监听完整地在这里反映出来了，并能够根据日志实时更新页面。页面的样子如下：
 
-
 ![Log](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/log.png)
 
 ### 7. 通信
+
 以下所有命令的具体信息请参看：[Mininet Walkthrough](http://mininet.org/walkthrough/)
 
 查看节点中连接信息，在mininet控制台输入以下命令：
@@ -352,6 +351,7 @@ Can be hexadecimal (with leading 0x) or decimal </td>
 ```
 mininet> net
 ```
+
 结果如下：
 
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/net.png)
@@ -361,6 +361,7 @@ mininet> net
 ```
 mininet> dump
 ```
+
 结果如下：
 
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/dump.png)
@@ -370,10 +371,10 @@ mininet> dump
 ```
 mininet> s9 ifconfig -a //s9 is a switch name
 ```
+
 结果如下：
 
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/ifconfig.png)
-
 
 查看特定switch或host的arp或route信息，在mininet控制台输入以下命令：
 
@@ -384,6 +385,7 @@ mininet> s9 arp //s9 is a switch name
 ```
 mininet> s9 route //s9 is a switch name
 ```
+
 结果如下：
 
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/arpAndroute.png)
@@ -393,6 +395,7 @@ mininet> s9 route //s9 is a switch name
 ```
 mininet> h1 ping -c 1 h2 //h1 , h2 is a host name
 ```
+
 结果如下：
 
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/ping.png)
@@ -402,14 +405,13 @@ mininet> h1 ping -c 1 h2 //h1 , h2 is a host name
 ```
 mininet> pingall
 ```
+
 结果如下：
 
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/pingall.png)
-
 
 ### 四、组员及分工
 
 * 钟晓诚MF1332095，靳峥MF1332025：Static Flow Pusher API实现。
 * 吕翔MF1332042，唐毅明MF1332057：编写测试用的发包脚本，项目文档编写。
 * 孟焱MF1332044，倪卫明MF1332045：拓扑设计与环境搭建，Web页面UI设计，日志功能实现。
-
