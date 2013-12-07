@@ -62,7 +62,7 @@ sudo mn --topo tree,depth=3,fanout=2 --controller=remote --ip=xxx.xxx.xxx.xxx --
 
 根据应用的需求和相关技术特性，我们对程序做如下体系结构设计：
 
-    体系结构图
+![Overview](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/overview.png)
 
 我们对上图做简单的说明：
 
@@ -73,7 +73,7 @@ sudo mn --topo tree,depth=3,fanout=2 --controller=remote --ip=xxx.xxx.xxx.xxx --
 
 具体的模块间协作图：
 
-    模块图
+![Info Diagram](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/activity.png)
     
 #### 为什么引入Command Proxy？
 
@@ -90,15 +90,29 @@ sudo mn --topo tree,depth=3,fanout=2 --controller=remote --ip=xxx.xxx.xxx.xxx --
 
 ### 1. 查看Switch列表及各个Switch的信息
 
+![Switches](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/switches.png)
+
 我们首先为用户提供了可视化界面来查看路由的列表，所有路由的IP Adress、Vender、Packets、Bytes、Flows以及Connected Since信息一览无遗。
 
 ### 2. 查看Host列表及各个Host的信息
 
+![Hosts](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/hosts.png)
+
+同时我们继续利用Floodlight的自带API让各主机的信息也展现在了用户面前。
+
 ### 3. 查看网络拓扑图
+
+![Topology](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/topology.png)
 
 ### 4. 查看流表
 
+![Flows](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/flows.png)
+
+我们还提供了查看流表的功能。用户可以看到流的名称、Cookie、优先级、数据包数量等信息。
+
 ### 5. 针对某个Switch添加/删除Static Flow
+
+![Add Flow](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/add-flow.png)
 
 应用给用户提供了增加和删除流表的功能。在流表的下方我们为用户提供了命令输入窗口，在这里用户可以自主输入添加流表命令，比如示例命令如下：
 
@@ -108,12 +122,20 @@ curl -d '{"switch": "00:00:00:00:00:00:00:09", "name":"flow-mod-1", "cookie":"0"
 
 来添加一条流表（具体命令格式详见Floodlight REST API说明）。上图是在添加流表，下图则是添加流表成功的样子。我们可以明显看到流表中多了一条记录。
 
+![Add Flow Result](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/add-flow-result.png)
+
 
 删除和添加基本上一样，区别仅在于命令不同。这是删除上面添加的流表的示例命令：
 
 ```
 curl -X DELETE -d '{"name":"flow-mod-1"}' http://localhost:8080/wm/staticflowentrypusher/json
 ```
+
+![Delete Flow Result](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/delete-flow-result-1.png)
+
+![Delete Flow Result](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/delete-flow-result-2.png)
+
+**对命令中的一些参数的说明**
 
 Possible properties of a flow entry:
 
@@ -301,6 +323,9 @@ Can be hexadecimal (with leading 0x) or decimal </td>
 ### 6. 查看日志
 
 最后我们还完成了查看日志的功能。整个拓扑网络的日志监听完整地在这里反映出来了，并能够根据日志实时更新页面。页面的样子如下：
+
+
+![Log](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/log.png)
 
 
 ### 四、组员及分工
