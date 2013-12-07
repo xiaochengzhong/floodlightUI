@@ -353,6 +353,7 @@ Can be hexadecimal (with leading 0x) or decimal </td>
 mininet> net
 ```
 结果如下：
+
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/net.png)
 
 查看所有节点的IP端口信息，在mininet控制台输入以下命令：
@@ -361,6 +362,7 @@ mininet> net
 mininet> dump
 ```
 结果如下：
+
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/dump.png)
 
 查看特定switch或host的端口信息，在mininet控制台输入以下命令：
@@ -369,6 +371,7 @@ mininet> dump
 mininet> s9 ifconfig -a //s9 is a switch name
 ```
 结果如下：
+
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/ifconfig.png)
 
 
@@ -382,6 +385,7 @@ mininet> s9 arp //s9 is a switch name
 mininet> s9 route //s9 is a switch name
 ```
 结果如下：
+
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/arpAndroute.png)
 
 查看两个节点间的连接信息，在mininet控制台输入以下命令：
@@ -390,6 +394,7 @@ mininet> s9 route //s9 is a switch name
 mininet> h1 ping -c 1 h2 //h1 , h2 is a host name
 ```
 结果如下：
+
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/ping.png)
 
 查看所有节点间的连接信息，在mininet控制台输入以下命令：
@@ -398,6 +403,7 @@ mininet> h1 ping -c 1 h2 //h1 , h2 is a host name
 mininet> pingall
 ```
 结果如下：
+
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/pingall.png)
 
 
