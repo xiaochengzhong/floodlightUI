@@ -54,14 +54,23 @@ Mininet可以很方便地创建一个支持SDN的网络：host就像真实的电
 
 ```
 sudo mn --topo tree,depth=3,fanout=2 --controller=remote --ip=xxx.xxx.xxx.xxx --port=6633
-```*更多Mininet操作指导可以参见[http://mininet.org/walkthrough/](http://mininet.org/walkthrough/)。*Mininet可以连接到Floodlight作为Controller，Controller可以是本地的或者远程的。默认情况下一个Mininet虚拟网络中的Swicth只能使用同一个Controller，但是可以通过编写自定义脚本的方式来构建Mininet拓扑，并且在其中显示的指定多个Controller。
+```
+
+*更多Mininet操作指导可以参见[http://mininet.org/walkthrough/](http://mininet.org/walkthrough/)。*
+
+Mininet可以连接到Floodlight作为Controller，Controller可以是本地的或者远程的。默认情况下一个Mininet虚拟网络中的Swicth只能使用同一个Controller，但是可以通过编写自定义脚本的方式来构建Mininet拓扑，并且在其中显示的指定多个Controller。
 
 
 ### 3. 应用概述
 
 我们希望基于Floodlight现有的[API](http://www.openflowhub.org/display/floodlightcontroller/APIs) (REST API, Static Flow Pusher API) 实现一个简单的管理站点。它的主要功能有：
 
-* 查看Switch列表及各个Switch的信息* 查看Host列表及各个Host的信息* 查看网络拓扑图* 查看流表* 针对某个Switch添加/删除Static Flow* 查看日志
+* 查看Switch列表及各个Switch的信息
+* 查看Host列表及各个Host的信息
+* 查看网络拓扑图
+* 查看流表
+* 针对某个Switch添加/删除Static Flow
+* 查看日志
 
 ## 二、应用设计
 
@@ -335,7 +344,66 @@ Can be hexadecimal (with leading 0x) or decimal </td>
 
 ![Log](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/log.png)
 
+### 7. 通信
+以下所有命令的具体信息请参看：[Mininet Walkthrough](http://mininet.org/walkthrough/)
+
+查看节点中连接信息，在mininet控制台输入以下命令：
+
+```
+mininet> net
+```
+结果如下：
+![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/net.png)
+
+查看所有节点的IP端口信息，在mininet控制台输入以下命令：
+
+```
+mininet> dump
+```
+结果如下：
+![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/dump.png)
+
+查看特定switch或host的端口信息，在mininet控制台输入以下命令：
+
+```
+mininet> s9 ifconfig -a //s9 is a switch name
+```
+结果如下：
+![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/ifconfig.png)
+
+
+查看特定switch或host的arp或route信息，在mininet控制台输入以下命令：
+
+```
+mininet> s9 arp //s9 is a switch name
+```
+
+```
+mininet> s9 route //s9 is a switch name
+```
+结果如下：
+![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/arpAndroute.png)
+
+查看两个节点间的连接信息，在mininet控制台输入以下命令：
+
+```
+mininet> h1 ping -c 1 h2 //h1 , h2 is a host name
+```
+结果如下：
+![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/ping.png)
+
+查看所有节点间的连接信息，在mininet控制台输入以下命令：
+
+```
+mininet> pingall
+```
+结果如下：
+![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/pingall.png)
+
 
 ### 四、组员及分工
-* 钟晓诚MF1332095，靳峥MF1332025：Static Flow Pusher API实现。* 吕翔MF1332042，唐毅明MF1332057：编写测试用的发包脚本，项目文档编写。* 孟焱MF1332044，倪卫明MF1332045：拓扑设计与环境搭建，Web页面UI设计，日志功能实现。
+
+* 钟晓诚MF1332095，靳峥MF1332025：Static Flow Pusher API实现。
+* 吕翔MF1332042，唐毅明MF1332057：编写测试用的发包脚本，项目文档编写。
+* 孟焱MF1332044，倪卫明MF1332045：拓扑设计与环境搭建，Web页面UI设计，日志功能实现。
 
