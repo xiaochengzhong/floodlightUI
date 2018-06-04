@@ -410,8 +410,3 @@ mininet> pingall
 
 ![display net](https://raw.github.com/xiaochengzhong/floodlightUI/master/release/images/pingall.png)
 
-### 四、组员及分工
-
-* 钟晓诚MF1332095，靳峥MF1332025：Static Flow Pusher API实现。
-* 吕翔MF1332042，唐毅明MF1332057：编写测试用的发包脚本，项目文档编写。
-* 孟焱MF1332044，倪卫明MF1332045：拓扑设计与环境搭建，Web页面UI设计，日志功能实现。
